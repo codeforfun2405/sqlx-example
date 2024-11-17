@@ -1,0 +1,11 @@
+-- Add migration script here
+CREATE TABLE IF NOT EXISTS account (
+    account_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    balance DECIMAL(15, 2) NOT NULL DEFAULT 0.00,
+    currency VARCHAR(3) NOT NULL DEFAULT 'USD',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
